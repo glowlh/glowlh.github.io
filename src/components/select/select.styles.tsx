@@ -13,7 +13,7 @@ export const Label = styled.div`
     margin-bottom: 8px;
 `;
 
-export const Select = styled.div<{ focused?: boolean }>`
+export const Select = styled.div`
     width: 100%;
     height: 50px;
     background: #FFFFFF;
@@ -26,7 +26,16 @@ export const Select = styled.div<{ focused?: boolean }>`
     cursor: pointer;
     position: relative;
     user-select: none;
-    ${({ focused }) => focused && css`border-color: #3377ff`}
+    
+    &:focus:not(:focus-visible) {
+        outline: 0;
+    }
+
+    &:focus,
+    &:focus-visible {
+        outline: 2px solid #338FFC;
+        outline-offset: 2px;
+    }
 `;
 
 export const DropList = styled.div`
