@@ -50,11 +50,21 @@ export const Tabs: FC<TabsProps> = (props) => {
 
     const handleKeyUp = (e: any) => {
         switch (e.key) {
-            case 'Escape': {
+            case 'Home': {
+                if (childrenList) {
+                    setActive(childrenList[0]);
+                    setFocused(childrenList[0]);
+                    focusTab(0);
+                }
                 break;
             }
-            case ' ':
-            case 'Enter': {
+            case 'End': {
+                if (childrenList) {
+                    const nextIndex = childrenList.length - 1;
+                    setActive(childrenList[nextIndex]);
+                    setFocused(childrenList[nextIndex]);
+                    focusTab(nextIndex);
+                }
                 break;
             }
             case 'ArrowRight': {
@@ -98,7 +108,7 @@ export const Tabs: FC<TabsProps> = (props) => {
     return (
         <Box {...attrs}>
             <TabsList role='tablist'>{tabsNav}</TabsList>
-            <TabPanel id='tabpanel-1' tabIndex={0}>{activeTabContent}</TabPanel>
+            <TabPanel tabIndex={0}>{activeTabContent}</TabPanel>
         </Box>
     );
 };

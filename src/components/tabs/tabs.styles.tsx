@@ -50,6 +50,7 @@ export const TabsItem = styled.div<{ value: string; label: string }>`
 `;
 
 export const TabPanel = styled.div`
+    padding: 0 16px;
     &:focus:not(:focus-visible) {
         outline: 0;
     }
