@@ -107,7 +107,7 @@ export const Tabs: FC<TabsProps> = (props) => {
 
     return (
         <Box {...attrs}>
-            <TabsList role='tablist'>{tabsNav}</TabsList>
+            <TabsList role='tablist' aria-labelledby={props['aria-labelledby']}>{tabsNav}</TabsList>
             <TabPanel tabIndex={0}>{activeTabContent}</TabPanel>
         </Box>
     );
