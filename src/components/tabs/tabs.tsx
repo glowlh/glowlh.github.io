@@ -34,7 +34,12 @@ export const Tabs: FC<TabsProps> = (props) => {
 
         const { value: childValue } = activeChild.props;
 
-        return <activeChild.type {...activeChild.props} id={`tabpannel-${childValue}`} role='tabpanel' aria-labelledby={`tab-${childValue}`} />
+        return <activeChild.type
+            {...activeChild.props}
+            id={`tabpannel-${childValue}`}
+            role='tabpanel'
+            aria-labelledby={`tab-${childValue}`}
+        />
     }, [active, children]);
 
 

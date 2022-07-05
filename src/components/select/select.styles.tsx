@@ -9,8 +9,10 @@ export const Box = styled.div`
     line-height: 22px;
 `;
 
-export const Label = styled.label`
+export const Label = styled.div`
     margin-bottom: 8px;
+    cursor: default;
+    user-select: none;
 `;
 
 export const Select = styled.div`

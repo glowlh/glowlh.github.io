@@ -61,6 +61,12 @@ export const Select: FC<SelectProps> = (props) => {
         };
     }, [toggleOpened]);
 
+    const handleKeyDownOption = (e: any) => {
+        if (e.key === 'Tab') {
+            toggleOpened(false);
+        }
+    }
+
     const handleKeyUpOption = (e: any) => {
         switch (e.key) {
             case 'Escape': {
@@ -104,10 +110,12 @@ export const Select: FC<SelectProps> = (props) => {
 
         return <child.type
             {...child.props}
+            tabIndex={optionValue === focusedOption?.value ? 0 : -1}
             focused={optionValue === focusedOption?.value}
             active={active.value === optionValue}
             onClick={handleSelect({ value: optionValue, content: children, index })}
             onKeyUp={handleKeyUpOption}
+            onKeyDown={handleKeyDownOption}
         />
     });
 
@@ -171,15 +179,21 @@ export const Select: FC<SelectProps> = (props) => {
         }
     };
 
+    const handleClickLabel = () => {
+        if (selectRef.current) {
+            selectRef.current.focus();
+        }
+    };
+
     return (
         <Box ref={ref}>
-            <Label htmlFor={id}>{label}</Label>
+            <Label onClick={handleClickLabel}>{label}</Label>
             <SelectBox
                 id={id}
                 role='listbox'
                 aria-controls='droplist'
                 aria-haspopup='listbox'
-                aria-label={`${label}. Выбран ${active.content}`}
+                aria-label={`${label} выбран ${active.content}`}
                 aria-expanded={opened}
                 ref={selectRef}
                 tabIndex={tabIndex}
