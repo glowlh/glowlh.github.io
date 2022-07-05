@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'styled-components';
-import { Select, Option, Button, Tabs, TabsItem, SkipLink } from './components';
+import { Select, Option, Button, Tabs, TabsItem, SkipLink, Modal } from './components';
 
 const Box = styled.div`
     padding: 40px;
@@ -19,7 +19,8 @@ const SelectBox = styled.div`
 `;
 
 function App() {
-  return (
+    const [opened, setOpened] = useState(false);
+    return (
     <Box>
         <h1 id='components' style={{ fontFamily: 'Arial' }}>Components</h1>
         <Tabs value='1' aria-labelledby='components'>
@@ -51,9 +52,20 @@ function App() {
                 <h2 id='content'>Го́вард (Ха́уард) Фи́ллипс Ла́вкрафт</h2>
                 <p>Американский писатель и журналист, работавший в жанрах ужасов, мистики, фэнтези и научной фантастики, совмещая их в оригинальном стиле. Наиболее известен созданием «Мифов Ктулху». Произведения Лавкрафта ныне выделяются в отдельный поджанр — так называемые «Лавкрафтовские ужасы».</p>
             </TabsItem>
+            <TabsItem value='5' label='Modal'>
+                <Button onClick={() => setOpened(true)}>Click for opening modal</Button>
+                <Modal opened={opened} aria-labelledby='modal-header' onClose={() => setOpened(false)}>
+                    <h2 id='modal-header'>Го́вард (Ха́уард) Фи́ллипс Ла́вкрафт</h2>
+                    <div tabIndex={0}>Я</div>
+                    <div tabIndex={0}>тут</div>
+                    <div tabIndex={0}>просто</div>
+                    <div tabIndex={0}>для</div>
+                    <div tabIndex={0}>примера</div>
+                </Modal>
+            </TabsItem>
         </Tabs>
     </Box>
-  );
+    );
 }
 
 export default App;

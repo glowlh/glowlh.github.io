@@ -18,6 +18,7 @@ export const Box = styled.button<{ disabledView: boolean; size: string }>`
     box-sizing: border-box;
     cursor: pointer;
     border: none;
+    padding: 0 20px;
     
     &:hover {
         background: #272C33;

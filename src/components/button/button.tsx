@@ -3,7 +3,7 @@ import { Box } from './button.styles';
 
 interface ButtonProps extends Omit<HTMLAttributes<HTMLButtonElement>, 'type'>{
     children?: any;
-    size: string;
+    size?: string;
     disabled?: boolean;
     type?: 'button' | 'submit' | 'reset' | undefined;
 }
