@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const Box = styled.section`
+export const Box = styled.div`
     font-family: 'Arial';
     box-sizing: border-box;
 `;

@@ -2,7 +2,7 @@ import React, {FC, useState, useEffect, useCallback, useRef, HTMLAttributes} fro
 import { SelectOpenDown, SelectHide } from 'vienna.icons';
 import { Box, Select as SelectBox, Option as OptionBox, DropList, Arrow, Label } from './select.styles';
 
-interface SelectProps {
+interface SelectProps extends Omit<HTMLAttributes<HTMLSelectElement>, ''>{
     value: string;
     children?: any;
     tabIndex?: number;
@@ -16,7 +16,7 @@ interface ActiveState {
 }
 
 export const Select: FC<SelectProps> = (props) => {
-    const { value, children, tabIndex = 0, label } = props;
+    const { value, children, tabIndex = 0, label, id, ...attrs } = props;
     const [active, setActive] = useState<ActiveState>({value, content: ''});
     const [opened, setOpened] = useState<boolean>(false);
     const [focusedOption, setFocusedOption] = useState<ActiveState | undefined>();
@@ -173,8 +173,9 @@ export const Select: FC<SelectProps> = (props) => {
 
     return (
         <Box ref={ref}>
-            <Label>{label}</Label>
+            <Label htmlFor={id}>{label}</Label>
             <SelectBox
+                id={id}
                 role='listbox'
                 aria-controls='droplist'
                 aria-haspopup='listbox'

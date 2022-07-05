@@ -9,7 +9,7 @@ export const Box = styled.div`
     line-height: 22px;
 `;
 
-export const Label = styled.div`
+export const Label = styled.label`
     margin-bottom: 8px;
 `;
 
