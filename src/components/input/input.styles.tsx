@@ -32,6 +32,7 @@ export const Label = styled.label<{ displayed: boolean }>`
     top: 0;
     left: 0;
     ${({ displayed }) => !displayed && css`display: none;`}
+    user-select: none;
 `;
 
 export const Message = styled.span<{ invalid: boolean }>`

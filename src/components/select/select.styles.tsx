@@ -10,9 +10,11 @@ export const Box = styled.div`
 `;
 
 export const Label = styled.div`
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     cursor: default;
     user-select: none;
+    font-size: 14px;
+    line-height: 20px;
 `;
 
 export const Select = styled.div`
