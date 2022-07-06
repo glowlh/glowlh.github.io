@@ -40,7 +40,7 @@ export const Select = styled.div`
     }
 `;
 
-export const DropList = styled.div`
+export const DropList = styled.div<{ opened: boolean }>`
     position: absolute;
     z-index: 1;
     background: #FFFFFF;
@@ -50,6 +50,7 @@ export const DropList = styled.div`
     width: 100%;
     max-height: 176px;
     overflow-y: auto;
+    ${({ opened }) => !opened && css`display: none;`}
 `;
 
 export const Option = styled.div<{ active?: boolean; focused?: boolean }>`

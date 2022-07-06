@@ -69,6 +69,14 @@ export const Select: FC<SelectProps> = (props) => {
 
     const handleKeyUpOption = (e: any) => {
         switch (e.key) {
+            case 'Home': {
+                setFocusedOption(childrenList[0]);
+                break;
+            }
+            case 'End': {
+                setFocusedOption(childrenList[childrenList.length - 1]);
+                break;
+            }
             case 'Escape': {
                 toggleOpened(false);
 
@@ -110,6 +118,7 @@ export const Select: FC<SelectProps> = (props) => {
 
         return <child.type
             {...child.props}
+            id={value}
             tabIndex={optionValue === focusedOption?.value ? 0 : -1}
             focused={optionValue === focusedOption?.value}
             active={active.value === optionValue}
@@ -195,6 +204,7 @@ export const Select: FC<SelectProps> = (props) => {
                 aria-haspopup='listbox'
                 aria-label={`${label} выбран ${active.content}`}
                 aria-expanded={opened}
+                aria-activedescendant={active.value}
                 ref={selectRef}
                 tabIndex={tabIndex}
                 onClick={handleClick}
@@ -203,10 +213,7 @@ export const Select: FC<SelectProps> = (props) => {
                 {active.content}
                 <Arrow>{opened ? <SelectHide /> : <SelectOpenDown />}</Arrow>
             </SelectBox>
-            {
-                opened &&
-                <DropList role='listbox' id='droplist'>{contentList}</DropList>
-            }
+            <DropList opened={opened} role='listbox' id='droplist' aria-label={label}>{contentList}</DropList>
         </Box>
     );
 };
