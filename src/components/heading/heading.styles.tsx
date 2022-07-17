@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components';
 
-const resetStyles = () => {
+const resetStyles = ({ centered }: HeadingProps) => {
     return css`
         line-height: 1;
         margin: 0;
         font-size: 24px;
         font-weight: 400;
+        text-align: ${centered ? 'center' : 'left'};
     `;
 };
 
@@ -46,6 +47,7 @@ const useSize = ({ size }: HeadingProps) => {
 type size = 's' | 'm' | 'l' | 'xl';
 interface HeadingProps {
     size?: size;
+    centered?: boolean;
 }
 
 export const H1 = styled.h1<HeadingProps>`

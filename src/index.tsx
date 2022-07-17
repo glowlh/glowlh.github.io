@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
       margin: 0;
   }
 
-  .root {
+  #root {
       position: relative;
       padding-bottom: 300px;
   }
