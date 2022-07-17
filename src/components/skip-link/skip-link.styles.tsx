@@ -1,8 +1,7 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Box = styled.a`
     text-decoration: none;
-    font-family: 'Arial';
     font-style: normal;
     font-weight: 400;
     font-size: 24px;
@@ -23,6 +22,7 @@ export const Box = styled.a`
     left: 2px;
     transition: top 0.2s;
     padding: 0 16px;
+    z-index: 1;
 
     &:hover {
         background: #272C33;

@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 
 export const Box = styled.div`
     position: relative;
-    font-family: 'Arial';
     font-style: normal;
     font-weight: 400;
     font-size: 18px;

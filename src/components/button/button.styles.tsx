@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 
 export const Box = styled.button<{ disabledView: boolean; size: string }>`
-    font-family: 'Arial';
     font-style: normal;
     font-weight: 400;
     font-size: 24px;

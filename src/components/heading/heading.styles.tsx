@@ -2,7 +2,6 @@ import styled, { css } from 'styled-components';
 
 const resetStyles = () => {
     return css`
-        font-family: 'Arial';
         line-height: 1;
         margin: 0;
         font-size: 24px;
@@ -12,9 +11,16 @@ const resetStyles = () => {
 
 const useSize = ({ size }: HeadingProps) => {
     switch (size) {
+        case 'xl': {
+            return css`
+                font-size: 42px;
+                line-height: 1.5;
+                margin-bottom: 30px;
+            `;
+        }
         case 'l': {
             return css`
-                font-size: 36px;
+                font-size: 32px;
                 line-height: 1.5;
                 margin-bottom: 20px;
             `;
@@ -37,7 +43,7 @@ const useSize = ({ size }: HeadingProps) => {
     }
 };
 
-type size = 's' | 'm' | 'l';
+type size = 's' | 'm' | 'l' | 'xl';
 interface HeadingProps {
     size?: size;
 }

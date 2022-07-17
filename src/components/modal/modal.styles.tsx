@@ -18,7 +18,6 @@ export const Box = styled.div`
     padding: 44px 62px;
     background: #fff;
     position: relative;
-    font-family: 'Arial';
     flex: none;
 `;
 

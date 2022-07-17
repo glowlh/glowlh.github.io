@@ -9,6 +9,6 @@ export const SkipLink: FC<SkipLinkProps> = (props) => {
     const { children, href, ...attrs } = props;
 
     return (
-        <Box {...attrs} href={href}>{children}</Box>
+        <Box {...attrs} href={href} tabIndex={1}>{children}</Box>
     );
 };

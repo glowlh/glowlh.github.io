@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import styled, { css } from 'styled-components';
-import { Select, Option, Button, Tabs, TabsItem, SkipLink, Modal, H1, H3, H2, Input } from './components';
+import styled from 'styled-components';
+import {Select, Option, Button, Tabs, TabsItem, SkipLink, Modal, H1, H3, H2, Input, Checkbox} from '../components';
 
 const Box = styled.div`
     padding: 40px;
@@ -18,7 +18,7 @@ const SelectBox = styled.div`
     width: 300px;
 `;
 
-function App() {
+export const App = () => {
     const [opened, setOpened] = useState(false);
     return (
     <Box>
@@ -77,9 +77,10 @@ function App() {
                     <Input invalid onChange={console.log} id='inp3' label='Here' design='material' placeholder='here placeholder' />
                 </VerticalGroup>
             </TabsItem>
+            <TabsItem value='8' label='Checkbox'>
+                <Checkbox id='checkbox' checked onChange={console.log}>I'm ready!</Checkbox>
+            </TabsItem>
         </Tabs>
     </Box>
     );
-}
-
-export default App;
+};

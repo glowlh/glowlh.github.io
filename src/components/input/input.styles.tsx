@@ -16,7 +16,6 @@ const resetInput = () => {
 }
 
 export const Box = styled.div`
-    font-family: 'Arial';
     font-style: normal;
     display: flex;
     flex-direction: column-reverse;
@@ -38,6 +37,9 @@ export const Label = styled.label<{ displayed: boolean }>`
 export const Message = styled.span<{ invalid: boolean }>`
     font-size: 14px;
     line-height: 20px;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
     ${({ invalid }) => invalid && css`
         color: #D13D35;
     `}

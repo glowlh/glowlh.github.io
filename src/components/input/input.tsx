@@ -1,4 +1,4 @@
-import React, {FC, HTMLAttributes, useCallback, useMemo} from 'react';
+import React, {FC, HTMLAttributes, useCallback, useEffect, useMemo} from 'react';
 import {InputBox, Box, Label, Message} from './input.styles';
 
 export type Design = 'material' | 'native';
@@ -9,17 +9,17 @@ interface InputProps extends Omit<HTMLAttributes<HTMLInputElement>, 'onChange'> 
     label: string;
     placeholder?: string;
     id: string;
-    onChange: (value?: string) => void;
+    onChange: (value: string) => void;
     message?: string;
     required?: boolean;
 }
 
 export const Input: FC<InputProps> = (props) => {
-    const { design = 'native', invalid = false, value, id, label, onChange, message, required = false, ...attrs } = props;
+    const { design = 'native', invalid = false, value = '', id, label, onChange, message, required = false, ...attrs } = props;
 
     const handleChange = useCallback((e: any) => {
         if (typeof onChange === 'function') {
-            onChange(e.target.value);
+            onChange(e.target.value || '');
         }
     }, [onChange]);
 
@@ -40,11 +40,24 @@ export const Input: FC<InputProps> = (props) => {
         return obj;
     }, [message, label, invalid, required, id]);
 
+    const messageAriaAttrs = useMemo(() => {
+        const obj: { [key: string]: any } = {
+            ['aria-live']: invalid && 'polite',
+        };
+
+        Object.keys(obj).forEach((key) => {
+            if (obj[key] === false || obj[key] === undefined) {
+                delete obj[key];
+            }
+        });
+
+        return obj;
+    }, [invalid]);
 
     return (
         <Box>
             {
-                message && <Message id={`hint-${id}`} invalid={invalid}>{message}</Message>
+                message && <Message {...messageAriaAttrs} id={`hint-${id}`} invalid={invalid}>{message}</Message>
             }
             <InputBox
                 {...attrs}
@@ -55,7 +68,7 @@ export const Input: FC<InputProps> = (props) => {
                 id={id}
                 onChange={handleChange}
             />
-            <Label htmlFor={id} displayed={design === 'native' || value !== undefined}>{label}</Label>
+            <Label htmlFor={id} displayed={design === 'native' || value !== ''}>{label}</Label>
         </Box>
     );
 };

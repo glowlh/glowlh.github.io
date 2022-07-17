@@ -1,14 +1,49 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+} from 'react-router-dom';
+import { createGlobalStyle } from 'styled-components';
+import { App, Site } from './pages';
 import reportWebVitals from './reportWebVitals';
+
+const GlobalStyle = createGlobalStyle`
+  body {
+      display: flex;
+      min-height: 100vh;
+      height: 100%;
+      flex-direction: column;
+      margin: 0;
+  }
+
+  .root {
+      position: relative;
+      padding-bottom: 300px;
+  }
+  
+  * {
+      box-sizing: border-box;
+      font-family: 'Lato', sans-serif;
+      margin: 0;
+      padding: 0;
+  }
+`
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-    <App />
+      <GlobalStyle />
+      <BrowserRouter>
+          <Routes>
+              <Route path='/' element={<App />} />
+              <Route path='/site' element={<Site />} />
+          </Routes>
+      </BrowserRouter>
   </React.StrictMode>
 );
 

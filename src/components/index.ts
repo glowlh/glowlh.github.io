@@ -5,3 +5,5 @@ export * from './skip-link';
 export * from './modal';
 export * from './heading';
 export * from './input';
+export * from './round-icon-link';
+export * from './checkbox';
