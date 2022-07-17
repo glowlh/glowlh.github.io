@@ -63,7 +63,14 @@ export const Select: FC<SelectProps> = (props) => {
         };
     }, [toggleOpened]);
 
+    const handleKeyDown = (e: any) => {
+        e.stopPropagation();
+        e.preventDefault();
+        e.stopImmediatePropagation();
+    }
+
     const handleKeyDownOption = (e: any) => {
+        handleKeyDown(e);
         if (e.key === 'Tab') {
             toggleOpened(false);
         }
@@ -213,6 +220,7 @@ export const Select: FC<SelectProps> = (props) => {
                 tabIndex={tabIndex}
                 onClick={handleClick}
                 onKeyUp={handleKeyUp}
+                onKeyDown={handleKeyDown}
             >
                 {active.content}
                 <Arrow>{opened ? <SelectHide /> : <SelectOpenDown />}</Arrow>

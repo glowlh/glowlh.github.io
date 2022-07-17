@@ -1,6 +1,6 @@
 import React, {FC, useMemo, useState} from 'react';
 import { H2, Input, Button, Checkbox } from '../../../components';
-import {Box, Form, FormField} from './subscription-form.styles';
+import {Box, CheckboxBox, Form, FormField} from './subscription-form.styles';
 
 export const SubscriptionForm: FC = () => {
     const [email, setEmail] = useState<string>();
@@ -60,9 +60,11 @@ export const SubscriptionForm: FC = () => {
                         onBlur={handleBlur}
                         onFocus={handleFocus}
                     />
+                    <CheckboxBox>
+                        <Checkbox id='checking-subscription' checked={checked} onChange={handleChangeChecked} onKeyDown={handleCheckboxKeyDown}>Согласен на обработку персональх данных</Checkbox>
+                    </CheckboxBox>
                     <Button type='submit' disabled={!canSubmit}>Подписаться</Button>
                 </FormField>
-                <Checkbox id='checking-subscription' checked={checked} onChange={handleChangeChecked} onKeyDown={handleCheckboxKeyDown}>Согласен на обработку персональх данных</Checkbox>
             </Form>
         </Box>
     );
