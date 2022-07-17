@@ -22,10 +22,10 @@ const Block = styled.div`
 
 const Video: FC<any> = (props) => {
     return (
-        <iframe {...props} style={{ width: '100%', minHeight: '400px' }} src='https://www.youtube.com/embed/Gv1I0y6PHfg'
-                frameBorder='0'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                allowFullScreen></iframe>
+        <iframe {...props} style={{ width: '100%', minHeight: '400px' }} src="https://www.youtube.com/embed/Gv1I0y6PHfg?controls=0&amp;showinfo=0&amp;rel=0&amp;modestbranding=1&amp;loop=1"
+            title="Dagon video" frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen></iframe>
     );
 }
 
