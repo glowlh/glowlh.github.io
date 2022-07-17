@@ -40,8 +40,8 @@ root.render(
       <GlobalStyle />
       <BrowserRouter>
           <Routes>
-              <Route path='/' element={<App />} />
-              <Route path='/site' element={<Site />} />
+              <Route path='/' element={<Site />} />
+              <Route path='/components' element={<App />} />
           </Routes>
       </BrowserRouter>
   </React.StrictMode>
