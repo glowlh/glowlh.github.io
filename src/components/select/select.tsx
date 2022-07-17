@@ -63,7 +63,17 @@ export const Select: FC<SelectProps> = (props) => {
         };
     }, [toggleOpened]);
 
+    const stopPropagation = (e: any) => {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+            e.stopPropagation();
+            e.preventDefault();
+            e.stopImmediatePropagation();
+        }
+    }
+
     const handleKeyDownOption = (e: any) => {
+        stopPropagation(e);
+
         if (e.key === 'Tab') {
             toggleOpened(false);
         }
@@ -179,13 +189,19 @@ export const Select: FC<SelectProps> = (props) => {
             case 'ArrowDown': {
                 if (!opened) {
                     selectOption('next');
+                } else {
+                    setFocusedOption(childrenList[0]);
                 }
+
                 break;
             }
             case 'ArrowUp': {
                 if (!opened) {
                     selectOption('prev');
+                } else {
+                    setFocusedOption(childrenList[childrenList.length - 1]);
                 }
+
                 break;
             }
             default: break;
@@ -213,6 +229,7 @@ export const Select: FC<SelectProps> = (props) => {
                 tabIndex={tabIndex}
                 onClick={handleClick}
                 onKeyUp={handleKeyUp}
+                onKeyDown={stopPropagation}
             >
                 {active.content}
                 <Arrow>{opened ? <SelectHide /> : <SelectOpenDown />}</Arrow>
