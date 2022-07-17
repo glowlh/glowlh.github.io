@@ -26,7 +26,7 @@ export const App = () => {
         <Tabs value='1' aria-labelledby='components'>
             <TabsItem value='1' label='Select'>
                 <SelectBox>
-                    <Select label='Label' value='1'>
+                    <Select label='Label' value='1' onChange={console.log}>
                         <Option value='1'>option 1</Option>
                         <Option value='2'>option 2</Option>
                         <Option value='3'>option 3</Option>

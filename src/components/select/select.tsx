@@ -2,11 +2,12 @@ import React, {FC, useState, useEffect, useCallback, useRef, HTMLAttributes} fro
 import { SelectOpenDown, SelectHide } from 'vienna.icons';
 import { Box, Select as SelectBox, Option as OptionBox, DropList, Arrow, Label } from './select.styles';
 
-interface SelectProps extends Omit<HTMLAttributes<HTMLSelectElement>, ''>{
+interface SelectProps extends Omit<HTMLAttributes<HTMLSelectElement>, 'onChange'>{
     value: string;
     children?: any;
     tabIndex?: number;
     label?: string;
+    onChange: (value: string) => void;
 }
 
 interface ActiveState {
@@ -16,7 +17,7 @@ interface ActiveState {
 }
 
 export const Select: FC<SelectProps> = (props) => {
-    const { value, children, tabIndex = 0, label, id, ...attrs } = props;
+    const { value, children, tabIndex = 0, label, id, onChange, ...attrs } = props;
     const [active, setActive] = useState<ActiveState>({value, content: ''});
     const [opened, setOpened] = useState<boolean>(false);
     const [focusedOption, setFocusedOption] = useState<ActiveState | undefined>();
@@ -29,6 +30,7 @@ export const Select: FC<SelectProps> = (props) => {
 
     const handleSelect = useCallback((option: ActiveState) => () => {
         setActive(option);
+        onChange(option.value);
         toggleOpened();
     }, [toggleOpened]);
 
@@ -89,6 +91,7 @@ export const Select: FC<SelectProps> = (props) => {
             case 'Enter': {
                 if (focusedOption) {
                     setActive(focusedOption);
+                    onChange(focusedOption.value);
                 }
                 toggleOpened(false);
 
@@ -152,6 +155,7 @@ export const Select: FC<SelectProps> = (props) => {
 
         if (type === 'select') {
             setActive(childrenList[nextIndex]);
+            onChange(childrenList[nextIndex].value);
         }
         if (type === 'focus') {
             setFocusedOption(childrenList[nextIndex])

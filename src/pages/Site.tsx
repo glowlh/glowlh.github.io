@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import {H1, H2, SkipLink, Tabs, TabsItem} from '../components';
-import {Footer, Header} from '../contaiters';
+import {Footer, Header, Catalog} from '../contaiters';
 
 const Content = styled.div`
     flex: 1;
@@ -39,6 +39,10 @@ export const Site: FC = () => {
                     <Block>
                         <H1 size='xl' id='books' centered>Книги Г.Ф. Лавкрафта</H1>
 
+                    </Block>
+
+                    <Block>
+                        <Catalog />
                     </Block>
 
                     <Block>

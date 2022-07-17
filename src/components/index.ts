@@ -7,3 +7,4 @@ export * from './heading';
 export * from './input';
 export * from './round-icon-link';
 export * from './checkbox';
+export * from './card';
