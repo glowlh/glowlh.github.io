@@ -17,7 +17,7 @@ export const Card: FC<CardProps> = (props) => {
     }, [price, oldPrice]);
 
     return (
-        <Box {...attrs} role='article'>
+        <Box {...attrs} role='article' aria-label={title}>
             <Image />
             <Info>
                 <H3>{title}</H3>
